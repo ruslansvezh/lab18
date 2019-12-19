@@ -1,0 +1,50 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main()
+{
+	setlocale(0, "");
+	int M;
+		cout << "Введите порядок квадратной матрицы : "<<endl;
+		cin >> M;
+	int** arr = new int* [M];
+	for (int i = 0; i < M; i++)
+	{
+		arr[i] = new int[M];
+	}
+	cout << "Введите элементы матрицы : " << endl;
+
+	for (int i = 0; i < M; i++)
+	{
+		for (int j = 0; j < M; j++)
+		{
+			cin >> arr[i][j];
+		}
+	}
+	cout << "Вывод элементов матрицы поспирали: " << endl;
+
+	for (int i = 0; i < (M / 2); i++)
+	{
+		for (int j = i; j < (M - i); j++)//вывод первого столбца 
+		{
+			cout << arr[j][i] << "\t";
+		}
+		cout << endl;
+		for (int j = (i + 1); j < (M - i); j++)//вывод нижней строки
+		{
+			cout << arr[M - i - 1][j] << "\t";
+		}
+		cout << endl;
+		for (int j = (M - i - 2); j >= i; j--)
+		{
+			cout << arr[j][M - i - 1] << "\t";
+		}
+		cout << endl;
+		for (int j = (M - i - 2); j >= i + 1; j--)
+		{
+			cout << arr[i][j] << "\t";
+		}
+		cout << endl;
+	}
+	cout << arr[M / 2][M / 2] << endl;
+}
