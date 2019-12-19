@@ -1,0 +1,64 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main()
+{
+	setlocale(0, "");
+	int M,N;
+		cout << "Введите кол-во строк в матрице : "<<endl;
+		cin >> M;
+		cout << "Введите кол-во столбцов в матрице : " << endl;
+		cin >> N;
+
+	int** arr = new int* [M];
+	for (int i = 0; i < M; i++)
+	{
+		arr[i] = new int[N];
+	}
+	cout << "Введите элементы матрицы : " << endl;
+
+	for (int i = 0; i < M; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			cin >> arr[i][j];
+		}
+	}
+	double K = 0, sum=0;
+	double sr = 0;
+
+	for( int i=0; i<N; i++)
+	{
+		sum = 0;
+		K = 0;
+		for (int j = 0; j < M;j++)
+		{
+			sum= sum + arr[j][i];
+		}
+		{
+			sr = sum / M;
+		}
+		for (int j = 0; j < M;j++)
+		{
+			if (arr[j][i] > sr)
+			{
+				K++;
+			}
+		}
+		/*cout << sum << endl;
+		cout << sr << endl;
+		cout << K << endl;*/
+		cout << "В столбце " << i + 1 << ": " << K << " элементов больших, чем среднее арифм. " << sr << endl;
+		
+	}
+		cout << "Вывод элементов матрицы : " << endl;
+
+		for (int i = 0; i < M; i++)
+		{
+			cout << endl;
+			for (int j = 0; j < N; j++)
+			{
+				cout << arr[i][j] << "\t";
+			}
+		}
+	}
