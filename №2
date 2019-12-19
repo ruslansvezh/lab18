@@ -1,0 +1,66 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main()
+{
+	setlocale(0, "");
+	int M,N;
+		cout << "Введите кол-во строк в матрице : "<<endl;
+		cin >> M;
+		cout << "Введите кол-во столбцов в матрице : " << endl;
+		cin >> N;
+
+	int** arr = new int* [M];
+	for (int i = 0; i < M; i++)
+	{
+		arr[i] = new int[N];
+	}
+	cout << "Введите элементы матрицы : " << endl;
+
+	for (int i = 0; i < M; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			cin >> arr[i][j];
+		}
+	}
+	cout << "Введите число К: ";
+	int K;
+	cin >> K;
+	if (K >= 1 && K <= M)
+	{
+		int sum = 0, proizv = 1;
+		for (int i = K - 1; i < K; i++)
+		{
+			for (int j = 0; j < N;j++)
+			{
+				sum = sum + arr[i][j];
+			}
+		}
+		cout << "Сумма элементов строки: " << sum << endl;
+
+		for (int i = K - 1; i < K; i++)
+		{
+			for (int j = 0; j < N;j++)
+			{
+				proizv = proizv * arr[i][j];
+			}
+		}
+		cout << "Произведение элементов строки: " << proizv << endl;
+
+		cout << "Вывод элементов матрицы : " << endl;
+
+		for (int i = 0; i < M; i++)
+		{
+			cout << endl;
+			for (int j = 0; j < N; j++)
+			{
+				cout << arr[i][j] << "\t";
+			}
+		}
+	}
+	else 
+	{
+		cout << "Неверное значение числа К!!!" << endl;
+	}
+}
